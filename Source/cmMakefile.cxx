@@ -241,6 +241,8 @@ cmListFileContext cmMakefile::GetExecutionContext() const
 void cmMakefile::PrintCommandTrace(const cmListFileFunction& lff) const
 {
   std::ostringstream msg;
+  msg << "(" << std::fixed << cmSystemTools::GetTime();
+  msg << ") (" << this->ContextStack.size() << ") ";
   msg << this->GetExecutionFilePath() << "(" << lff.Line << "):  ";
   msg << lff.Name << "(";
   bool expand = this->GetCMakeInstance()->GetTraceExpand();
